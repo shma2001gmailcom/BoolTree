@@ -1,0 +1,20 @@
+After building jar
+- make some distribution folder
+- put jar into distribution
+- put a file named 'rule.properties' into distribution folder
+- specify three properties inside rule.properties file like this
+################################################################
+base.folder=/home/misha/workspace/BracketTree-01
+content=(((new) NOT) (getInstance) OR)
+path=((java) ((class)NOT) ((x) NOT) AND)
+################################################################
+
+Application searches inside base folder for all files
+such that
+ 1) one can meet 'new'
+ or not meet 'getInstance' in file content
+ and
+ 2) file path contains not neither
+ 'class' nor 'x' but contains 'java'.
+ note that all three properties must be
+ nonempty.
