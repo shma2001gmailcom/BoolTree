@@ -18,7 +18,7 @@ fi
 if [ -e ${appfolder}/dist ]; then
     rm -rd ${appfolder}/dist
     echo ===================================================
-    echo remove stale jar...
+    echo remove stale distribution...
 fi
 mkdir ${appfolder}/dist
 mkdir ${appfolder}/dist/resources
