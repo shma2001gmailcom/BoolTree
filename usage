@@ -1,8 +1,4 @@
-After building jar
-- make some distribution folder
-- put jar into distribution
-- put a file named 'rule.properties' into distribution folder
-- specify three properties inside rule.properties file like this
+ specify three properties inside rule.properties file like this
 ################################################################
 base.folder=/home/misha/workspace/BracketTree-01
 content=(((new) NOT) (getInstance) OR)
