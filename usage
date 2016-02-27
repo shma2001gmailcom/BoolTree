@@ -13,4 +13,4 @@ such that
  2) file path contains neither
  'class' nor 'x' but contains 'java'.
  note that all three properties must be
- non-empty.
+ non empty.
