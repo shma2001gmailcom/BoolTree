@@ -1,12 +1,14 @@
 package org.misha.example;
 
 import org.apache.log4j.Logger;
-import org.misha.util.PropertiesReader;
 import org.misha.logical.evaluator.StrictEvaluator;
 import org.misha.logical.tree.Node;
+import org.misha.util.PropertiesReader;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * @author misha
@@ -34,6 +36,10 @@ public class Example {
     @SuppressWarnings("javadoc")
     public static void main(String[] args) {
         Example example = new Example();
+        for(Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext();) {
+            Map.Entry<String, String> entry = it.next();
+            log.debug(entry.getKey() + " is " + entry.getValue());
+        }
         example.search(new File(PropertiesReader.getProperty("base.folder")));
         while (!example.getResults().isEmpty()) {
             log.info(example.results.pop());
