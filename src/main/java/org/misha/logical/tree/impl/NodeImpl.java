@@ -2,7 +2,6 @@ package org.misha.logical.tree.impl;
 
 import org.apache.log4j.Logger;
 import org.misha.logical.tree.Node;
-import org.misha.logical.tree.Tree;
 
 import java.util.ArrayList;
 
@@ -28,20 +27,6 @@ public class NodeImpl<T> implements Node<T> {
         parent = null;
         content = c;
         name = "Node(" + c.toString() + ")";
-    }
-
-    /**
-     * @param args is not used
-     */
-    public static void main(String[] args) {
-        Node<Integer> root = new NodeImpl<Integer>(1);
-        root.addChild(new NodeImpl<Integer>(10));
-        root.addChild(new NodeImpl<Integer>(11));
-        Tree<Integer> t = new TreeImpl<Integer>(root);
-        Node<Integer> copyRoot = root.copy();
-        Tree<Integer> copyT = new TreeImpl<Integer>(copyRoot);
-        log.info("Is them equals? " + t.toString().equals(copyT.toString()) + "!");
-        log.info("is them same? " + (t == copyT) + "!");
     }
 
     @Override
