@@ -47,7 +47,7 @@ public class LogicalTree {
     }
 
     // checks are parenthesises correct
-    private boolean parCorrect() {
+    private boolean isCorrect() {
         int level = 0;
         for (Character c : list) {
             if (c == ')') {
@@ -63,7 +63,7 @@ public class LogicalTree {
      * @return evaluation org.misha.logical.tree
      */
     public Tree<String> makeTree() {
-        if (!parCorrect()) {
+        if (!isCorrect()) {
             log.error("parenthesizes does not match. check input.");
             return null;
         }

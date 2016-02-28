@@ -1,12 +1,11 @@
 package org.misha.logical.evaluator;
 
-import org.misha.logical.evaluator.operation.And;
-import org.misha.logical.evaluator.operation.Not;
-import org.misha.logical.evaluator.operation.Or;
 import org.misha.logical.tree.Node;
 import org.misha.logical.tree.impl.NodeImpl;
 
 import java.util.LinkedList;
+
+import static org.misha.logical.evaluator.operation.Operations.OPERATIONS;
 
 /**
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
@@ -25,15 +24,7 @@ public class BoolNode extends NodeImpl<String> {
         for (Node<String> child : node.getChildren()) {
             addChild(new BoolNode((NodeImpl<String>) child));
         }
-        if (getContent().equalsIgnoreCase("AND")) {
-            op = And.AND();
-        }
-        if (getContent().equalsIgnoreCase("OR")) {
-            op = Or.OR();
-        }
-        if (getContent().equalsIgnoreCase("NOT")) {
-            op = Not.NOT();
-        }
+        op = OPERATIONS.findBy(getContent());
     }
 
     /**
@@ -46,9 +37,7 @@ public class BoolNode extends NodeImpl<String> {
         }
         LinkedList<Boolean> args = new LinkedList<Boolean>();
         for (Node<String> child : getChildren()) {
-            NodeImpl<String> nodeImpl = (NodeImpl<String>) child;
-            BoolNode boolChild = new BoolNode(nodeImpl);
-            args.add(boolChild.evaluate());
+            args.add(new BoolNode((NodeImpl<String>) child).evaluate());
         }
         return op.proceed(args);
     }

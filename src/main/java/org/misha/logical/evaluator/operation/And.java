@@ -4,7 +4,7 @@ import org.misha.logical.evaluator.Operation;
 
 import java.util.LinkedList;
 
-import static org.misha.logical.evaluator.operation.Or.OR;
+import static org.misha.logical.evaluator.operation.Or.or;
 
 /**
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
@@ -21,7 +21,7 @@ public final class And implements Operation<Boolean, Boolean> {
     /**
      * @return operation and
      */
-    public static And AND() {
+    public static And and() {
         if (and == null) {
             and = new And();
         }
@@ -37,6 +37,6 @@ public final class And implements Operation<Boolean, Boolean> {
             }
             anotherArgs.add(!x);
         }
-        return !OR().proceed(anotherArgs);
+        return !or().proceed(anotherArgs);
     }
 }

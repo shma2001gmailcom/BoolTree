@@ -19,7 +19,7 @@ public final class Not implements Operation<Boolean, Boolean> {
     /**
      * @return operation not
      */
-    public static Not NOT() {
+    public static Not not() {
         if (not == null) {
             not = new Not();
         }

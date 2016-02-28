@@ -19,7 +19,7 @@ public final class Or implements Operation<Boolean, Boolean> {
     /**
      * @return operation or
      */
-    public static Or OR() {
+    public static Or or() {
         if (or == null) {
             or = new Or();
         }

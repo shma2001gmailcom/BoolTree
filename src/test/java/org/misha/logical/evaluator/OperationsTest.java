@@ -19,17 +19,17 @@ public class OperationsTest {
         LinkedList<Boolean> args = new LinkedList<Boolean>();
         args.add(true);
         args.add(false);
-        assertTrue(Or.OR().proceed(args));
-        assertFalse(And.AND().proceed(args));
+        assertTrue(Or.or().proceed(args));
+        assertFalse(And.and().proceed(args));
         args.clear();
         args.add(true);
         args.add(true);
-        assertTrue(Or.OR().proceed(args));
-        assertTrue(And.AND().proceed(args));
+        assertTrue(Or.or().proceed(args));
+        assertTrue(And.and().proceed(args));
         args.clear();
         args.add(false);
         args.add(false);
-        assertFalse(Or.OR().proceed(args));
-        assertFalse(And.AND().proceed(args));
+        assertFalse(Or.or().proceed(args));
+        assertFalse(And.and().proceed(args));
     }
 }
