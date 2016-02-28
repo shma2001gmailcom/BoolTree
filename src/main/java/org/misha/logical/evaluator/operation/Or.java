@@ -8,10 +8,10 @@ import java.util.LinkedList;
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
  * <p/>
  * Operation or.
+ * The value
  */
 
 public final class Or implements Operation<Boolean, Boolean> {
-    private static Or or;
 
     private Or() {
     }
@@ -20,10 +20,7 @@ public final class Or implements Operation<Boolean, Boolean> {
      * @return operation or
      */
     public static Or or() {
-        if (or == null) {
-            or = new Or();
-        }
-        return or;
+        return Holder.or;
     }
 
     @Override
@@ -40,5 +37,9 @@ public final class Or implements Operation<Boolean, Boolean> {
             }
         }
         return false;
+    }
+
+    private static class Holder {
+        private static final Or or = new Or();
     }
 }

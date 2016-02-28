@@ -36,7 +36,7 @@ public class Example {
     @SuppressWarnings("javadoc")
     public static void main(String[] args) {
         Example example = new Example();
-        for(Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext();) {
+        for (Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
             log.debug(entry.getKey() + " is " + entry.getValue());
         }

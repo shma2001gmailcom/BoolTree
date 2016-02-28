@@ -29,6 +29,14 @@ public final class PropertiesReader {
         map = fillMap();
     }
 
+    public static String getProperty(final String key) {
+        return Holder.instance.map.get(key);
+    }
+
+    public static Iterator<Map.Entry<String, String>> iterator() {
+        return Holder.instance.map.entrySet().iterator();
+    }
+
     private Map<String, String> fillMap() {
         Map<String, String> result = null;
         LineIterator it = null;
@@ -55,14 +63,6 @@ public final class PropertiesReader {
             }
         }
         return builder.build();
-    }
-
-    public static String getProperty(final String key) {
-        return Holder.instance.map.get(key);
-    }
-
-    public static Iterator<Map.Entry<String, String>> iterator() {
-        return Holder.instance.map.entrySet().iterator();
     }
 
     private static class Holder {

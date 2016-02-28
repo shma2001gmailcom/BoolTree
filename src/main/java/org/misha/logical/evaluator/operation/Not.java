@@ -8,10 +8,10 @@ import java.util.LinkedList;
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
  * <p/>
  * Operation not.
+ * The value
  */
 
 public final class Not implements Operation<Boolean, Boolean> {
-    private static Not not;
 
     private Not() {
     }
@@ -20,10 +20,7 @@ public final class Not implements Operation<Boolean, Boolean> {
      * @return operation not
      */
     public static Not not() {
-        if (not == null) {
-            not = new Not();
-        }
-        return not;
+        return Holder.not;
     }
 
     @Override
@@ -36,5 +33,9 @@ public final class Not implements Operation<Boolean, Boolean> {
             throw new IllegalArgumentException("Null arguments is not supported.");
         }
         return !value;
+    }
+
+    private static class Holder {
+        private static final Not not = new Not();
     }
 }

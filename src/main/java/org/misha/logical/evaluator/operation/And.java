@@ -10,10 +10,11 @@ import static org.misha.logical.evaluator.operation.Or.or;
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
  * <p/>
  * Operation and.
+ *
+ * The value
  */
 
 public final class And implements Operation<Boolean, Boolean> {
-    private static And and;
 
     private And() {
     }
@@ -22,10 +23,7 @@ public final class And implements Operation<Boolean, Boolean> {
      * @return operation and
      */
     public static And and() {
-        if (and == null) {
-            and = new And();
-        }
-        return and;
+        return Holder.and;
     }
 
     @Override
@@ -38,5 +36,9 @@ public final class And implements Operation<Boolean, Boolean> {
             anotherArgs.add(!x);
         }
         return !or().proceed(anotherArgs);
+    }
+
+    private static class Holder {
+        private static final And and = new And();
     }
 }
