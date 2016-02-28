@@ -6,11 +6,10 @@ import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.google.common.collect.ImmutableMap.*;
+import static com.google.common.collect.ImmutableMap.Builder;
 import static org.apache.commons.io.FileUtils.lineIterator;
 import static org.apache.commons.io.LineIterator.closeQuietly;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -63,18 +62,10 @@ public final class PropertiesReader {
     }
 
     public static Iterator<Map.Entry<String, String>> iterator() {
-        Map<String, String> clone = new HashMap<String, String>();
-        for(Map.Entry<String, String> entry : Holder.instance.map.entrySet()) {
-            clone.put(entry.getKey(), entry.getValue());
-        }
-        return clone.entrySet().iterator();
+        return Holder.instance.map.entrySet().iterator();
     }
 
     private static class Holder {
         private static final PropertiesReader instance = new PropertiesReader(new File(path));
-
-        static {
-            instance.fillMap();
-        }
     }
 }
