@@ -2,7 +2,6 @@ package org.misha.logical.evaluator.operation;
 
 import org.misha.logical.evaluator.Operation;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -32,8 +31,7 @@ public final class Not implements Operation<Boolean, Boolean> {
         if (args.size() != 1) {
             throw new IllegalArgumentException("NOT must have exactly one argument.");
         }
-        Iterator<Boolean> it = args.iterator();
-        Boolean value = it.next();
+        Boolean value = args.iterator().next();
         if (value == null) {
             throw new IllegalArgumentException("Null arguments is not supported.");
         }
