@@ -1,0 +1,8 @@
+/bash/distribution.bash
+.class
+.idea/
+/out
+/target
+/dist
+*.iml
+
