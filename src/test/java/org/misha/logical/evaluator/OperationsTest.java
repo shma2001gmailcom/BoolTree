@@ -1,8 +1,8 @@
 package org.misha.logical.evaluator;
 
 import org.junit.Test;
-import org.misha.logical.evaluator.operation.And;
-import org.misha.logical.evaluator.operation.Or;
+import org.misha.logical.operation.And;
+import org.misha.logical.operation.Or;
 
 import java.util.LinkedList;
 

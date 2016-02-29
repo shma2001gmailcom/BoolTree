@@ -1,6 +1,6 @@
 package org.misha.logical.tree.impl;
 
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 
 /**
  * Author: mshevelin Date: 10/24/11 Time: 10:03 AM

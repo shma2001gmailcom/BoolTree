@@ -1,7 +1,7 @@
 package org.misha.logical.tree.impl;
 
 import org.apache.log4j.Logger;
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 
 import java.util.ArrayList;
 
@@ -42,17 +42,6 @@ public class NodeImpl<T> implements Node<T> {
     @Override
     public final ArrayList<Node<T>> getChildren() {
         return children;
-    }
-
-    @Override
-    public final int getDepth() {
-        int d = 0;
-        Node<T> node = this;
-        while (node.getParent() != null) {
-            ++d;
-            node = node.getParent();
-        }
-        return d;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package org.misha.logical.tree.impl;
 
 import org.apache.log4j.Logger;
-import org.misha.logical.tree.Node;
-import org.misha.logical.tree.Tree;
+import org.misha.logical.Node;
+import org.misha.logical.Tree;
 
 /**
  * author: mshevelin
@@ -29,7 +29,7 @@ public class TreeImpl<T> implements Tree<T> {
 
     @SuppressWarnings("rawtypes")
     @Override
-    public final org.misha.logical.tree.Iterator<Node> iterator() {
+    public final org.misha.logical.Iterator<Node> iterator() {
         return new Iterator();
     }
 
@@ -56,7 +56,7 @@ public class TreeImpl<T> implements Tree<T> {
     }
 
     @SuppressWarnings("rawtypes")
-    private class Iterator implements org.misha.logical.tree.Iterator<Node> {
+    private class Iterator implements org.misha.logical.Iterator<Node> {
         private final Stack stack = new Stack();
 
         private Iterator() {

@@ -1,5 +1,6 @@
 package org.misha.logical.evaluator;
 
+import org.misha.logical.Evaluator;
 import org.misha.logical.tree.LogicalTree;
 import org.misha.logical.tree.impl.NodeImpl;
 

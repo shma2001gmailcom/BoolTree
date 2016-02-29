@@ -1,7 +1,7 @@
 package org.misha.logical.tree.impl;
 
 import org.apache.log4j.Logger;
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 
 import java.util.Collection;
 import java.util.LinkedList;

@@ -1,8 +1,9 @@
 package org.misha.logical.evaluator;
 
+import org.misha.logical.Evaluator;
 import org.misha.logical.tree.LogicalTree;
-import org.misha.logical.tree.Node;
-import org.misha.logical.tree.Tree;
+import org.misha.logical.Node;
+import org.misha.logical.Tree;
 
 import java.util.Collection;
 

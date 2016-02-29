@@ -2,7 +2,7 @@ package org.misha.logical.evaluator;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 
 import java.security.SecureRandom;
 import java.util.Calendar;

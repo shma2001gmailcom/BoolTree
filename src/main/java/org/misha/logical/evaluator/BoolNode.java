@@ -1,11 +1,12 @@
 package org.misha.logical.evaluator;
 
-import org.misha.logical.tree.Node;
+import org.misha.logical.Operation;
+import org.misha.logical.Node;
 import org.misha.logical.tree.impl.NodeImpl;
 
 import java.util.LinkedList;
 
-import static org.misha.logical.evaluator.operation.Operations.OPERATIONS;
+import static org.misha.logical.operation.Operations.OPERATIONS;
 
 /**
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM

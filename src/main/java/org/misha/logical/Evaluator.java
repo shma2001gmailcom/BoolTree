@@ -1,4 +1,4 @@
-package org.misha.logical.evaluator;
+package org.misha.logical;
 
 /**
  * Author: mshevelin Date: 8/6/12 Time: 12:30 PM

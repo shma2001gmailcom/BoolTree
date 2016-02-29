@@ -1,6 +1,6 @@
-package org.misha.logical.evaluator.operation;
+package org.misha.logical.operation;
 
-import org.misha.logical.evaluator.Operation;
+import org.misha.logical.Operation;
 
 import java.util.LinkedList;
 
