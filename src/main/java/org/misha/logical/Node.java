@@ -1,4 +1,4 @@
-package org.misha.logical.tree;
+package org.misha.logical;
 
 import java.util.Collection;
 
@@ -17,9 +17,6 @@ public interface Node<T> {
 
     @SuppressWarnings("javadoc")
     Collection<Node<T>> getChildren();
-
-    @SuppressWarnings("javadoc")
-    int getDepth();
 
     @SuppressWarnings("javadoc")
     void setDepth(int depth);

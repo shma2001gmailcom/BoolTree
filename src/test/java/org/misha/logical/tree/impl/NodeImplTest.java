@@ -1,8 +1,8 @@
 package org.misha.logical.tree.impl;
 
 import org.junit.Test;
-import org.misha.logical.tree.Node;
-import org.misha.logical.tree.Tree;
+import org.misha.logical.Node;
+import org.misha.logical.Tree;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

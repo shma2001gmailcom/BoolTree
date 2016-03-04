@@ -1,6 +1,6 @@
-package org.misha.logical.evaluator.operation;
+package org.misha.logical.operation;
 
-import org.misha.logical.evaluator.Operation;
+import org.misha.logical.Operation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +10,7 @@ import java.util.Map;
  * date: 2/28/16 10:50 AM.
  */
 public enum Operations {
+
     OPERATIONS;
 
     private static final Map<String, Operation<Boolean, Boolean>> operations =

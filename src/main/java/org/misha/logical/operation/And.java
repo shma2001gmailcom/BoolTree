@@ -1,10 +1,10 @@
-package org.misha.logical.evaluator.operation;
+package org.misha.logical.operation;
 
-import org.misha.logical.evaluator.Operation;
+import org.misha.logical.Operation;
 
 import java.util.LinkedList;
 
-import static org.misha.logical.evaluator.operation.Or.or;
+import static org.misha.logical.operation.Or.or;
 
 /**
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
@@ -28,7 +28,7 @@ public final class And implements Operation<Boolean, Boolean> {
 
     @Override
     public Boolean proceed(final LinkedList<Boolean> args) throws IllegalArgumentException {
-        LinkedList<Boolean> anotherArgs = new LinkedList<Boolean>();
+        final LinkedList<Boolean> anotherArgs = new LinkedList<Boolean>();
         for (Boolean x : args) {
             if (x == null) {
                 throw new IllegalArgumentException("Null arguments is not supported.");

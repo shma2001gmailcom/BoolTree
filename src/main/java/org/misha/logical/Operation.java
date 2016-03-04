@@ -1,4 +1,4 @@
-package org.misha.logical.evaluator;
+package org.misha.logical;
 
 import java.util.LinkedList;
 

@@ -1,6 +1,6 @@
 package org.misha.logical.tree.impl;
 
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 
 import java.util.LinkedList;
 

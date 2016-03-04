@@ -1,6 +1,8 @@
 package org.misha.logical.tree;
 
 import org.apache.log4j.Logger;
+import org.misha.logical.Node;
+import org.misha.logical.Tree;
 import org.misha.logical.tree.impl.NodeImpl;
 import org.misha.logical.tree.impl.TreeImpl;
 

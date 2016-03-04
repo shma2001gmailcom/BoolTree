@@ -1,4 +1,4 @@
-package org.misha.logical.tree;
+package org.misha.logical;
 
 /**
  * Author: misha shevelin Date: 1/23/12 Time: 10:57 PM

@@ -2,7 +2,7 @@ package org.misha.example;
 
 import org.apache.log4j.Logger;
 import org.misha.logical.evaluator.StrictEvaluator;
-import org.misha.logical.tree.Node;
+import org.misha.logical.Node;
 import org.misha.util.PropertiesReader;
 
 import java.io.*;
