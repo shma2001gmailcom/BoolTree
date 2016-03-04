@@ -14,7 +14,7 @@ import static org.misha.logical.evaluator.operation.Operations.OPERATIONS;
  */
 
 public class BoolNode extends NodeImpl<String> {
-    private Operation<Boolean, Boolean> op;
+    private final Operation<Boolean, Boolean> op;
 
     /**
      * @param node the boolean node constructed by the given node
