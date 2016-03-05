@@ -10,7 +10,7 @@ import static org.misha.logical.operation.Or.or;
  * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
  * <p/>
  * Operation and.
- *
+ * <p/>
  * The value
  */
 

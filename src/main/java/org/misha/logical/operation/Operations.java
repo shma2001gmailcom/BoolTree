@@ -10,7 +10,6 @@ import java.util.Map;
  * date: 2/28/16 10:50 AM.
  */
 public enum Operations {
-
     OPERATIONS;
 
     private static final Map<String, Operation<Boolean, Boolean>> operations =
