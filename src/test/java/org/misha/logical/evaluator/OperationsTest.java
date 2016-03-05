@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
  * Author: mshevelin Date: 8/9/12 Time: 2:36 PM
  */
 public class OperationsTest {
-    @SuppressWarnings("javadoc")
+
     @Test
     public void testOperations() {
         LinkedList<Boolean> args = new LinkedList<Boolean>();

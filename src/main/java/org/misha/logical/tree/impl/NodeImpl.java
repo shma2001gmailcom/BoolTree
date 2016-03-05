@@ -16,9 +16,6 @@ public class NodeImpl<T> implements Node<T> {
     private int depth;
     private String name;
 
-    /**
-     * @param c a content of the node
-     */
     public NodeImpl(T c) {
         depth = 0;
         children = new ArrayList<Node<T>>();

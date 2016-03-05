@@ -16,9 +16,6 @@ public final class Or implements Operation<Boolean, Boolean> {
     private Or() {
     }
 
-    /**
-     * @return operation or
-     */
     public static Or or() {
         return Holder.or;
     }

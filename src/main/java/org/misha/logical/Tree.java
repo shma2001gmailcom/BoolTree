@@ -7,8 +7,5 @@ package org.misha.logical;
  */
 public interface Tree<T> {
 
-    /**
-     * @return the root of the org.misha.logical.tree
-     */
     Node<T> root();
 }

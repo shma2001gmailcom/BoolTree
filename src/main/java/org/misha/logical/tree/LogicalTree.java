@@ -48,7 +48,6 @@ public class LogicalTree {
         }
     }
 
-    // checks are parenthesises correct
     private boolean isCorrect() {
         int level = 0;
         for (Character c : list) {
@@ -61,9 +60,6 @@ public class LogicalTree {
         return level == 0;
     }
 
-    /**
-     * @return evaluation org.misha.logical.tree
-     */
     public Tree<String> makeTree() {
         if (!isCorrect()) {
             log.error("parenthesizes does not match. check input.");
@@ -97,7 +93,7 @@ public class LogicalTree {
         }
         if (node != null) {
             while (!node.isRoot()) {
-                node = node.getParent();// achieve the root
+                node = node.getParent();
             }
         }
         return new TreeImpl<String>(node);

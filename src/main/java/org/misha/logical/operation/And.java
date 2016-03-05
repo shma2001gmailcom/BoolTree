@@ -19,9 +19,6 @@ public final class And implements Operation<Boolean, Boolean> {
     private And() {
     }
 
-    /**
-     * @return operation and
-     */
     public static And and() {
         return Holder.and;
     }

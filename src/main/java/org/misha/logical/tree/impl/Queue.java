@@ -12,9 +12,6 @@ import java.util.LinkedList;
 public final class Queue<T> {
     private final LinkedList<Node<T>> list = new LinkedList<Node<T>>();
 
-    /**
-     * @return and remove first node
-     */
     public Node<T> pop() {
         Node<T> node = list.pop();
         if (!node.isLeaf()) {
@@ -23,16 +20,10 @@ public final class Queue<T> {
         return node;
     }
 
-    /**
-     * @param n a node to add
-     */
     public void add(final Node<T> n) {
         list.add(n);
     }
 
-    /**
-     * @return boolean
-     */
     public boolean isEmpty() {
         return list.isEmpty();
     }

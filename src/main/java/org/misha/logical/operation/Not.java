@@ -16,9 +16,6 @@ public final class Not implements Operation<Boolean, Boolean> {
     private Not() {
     }
 
-    /**
-     * @return operation not
-     */
     public static Not not() {
         return Holder.not;
     }

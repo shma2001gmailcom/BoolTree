@@ -33,7 +33,6 @@ public class Example {
         contentRule = PropertiesReader.getProperty("content");
     }
 
-    @SuppressWarnings("javadoc")
     public static void main(String[] args) throws Exception {
         Example example = new Example();
         for (Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext(); ) {
@@ -100,8 +99,7 @@ public class Example {
         return result;
     }
 
-    @SuppressWarnings("javadoc")
-    public void search(final File file) throws Exception {
+    public void search(final File file) {
         if (file.isFile()) {
             if (evaluator(PATH, file).evaluate(pathRule)) {
                 if (evaluator(CONTENT, file).evaluate(contentRule)) {
@@ -119,7 +117,6 @@ public class Example {
         }
     }
 
-    @SuppressWarnings("javadoc")
     public LinkedList<String> getResults() {
         return results;
     }

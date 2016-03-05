@@ -12,7 +12,6 @@ public interface Operation<T, S> {
     /**
      * @param arguments argument-list
      * @return result of operation
-     * @throws Exception
      */
-    T proceed(LinkedList<S> arguments) throws Exception;
+    T proceed(LinkedList<S> arguments);
 }

@@ -12,7 +12,7 @@ import java.util.LinkedList;
  */
 public abstract class BoolNodeProcessor implements Evaluator<Boolean> {
 
-    private boolean evaluate(final Node<String> node) throws Exception {
+    private boolean evaluate(final Node<String> node) {
         if (node.isLeaf()) {
             return evaluateLeaf(node);
         } else {
@@ -25,7 +25,7 @@ public abstract class BoolNodeProcessor implements Evaluator<Boolean> {
     }
 
     @Override
-    public Boolean evaluate(final String s) throws Exception {
+    public Boolean evaluate(final String s) {
         return evaluate(new LogicalTree(s).makeTree().root());
     }
 

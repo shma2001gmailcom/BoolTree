@@ -20,7 +20,6 @@ public class StrictEvaluatorTest {
      * The expression !((!x || y) && (!y || z)) || (!x || z) is true for each
 	 * boolean x, y, z.
 	 */
-    @SuppressWarnings("javadoc")
     @Test
     public void testEvaluate() throws Exception {
         boolean result = true;
