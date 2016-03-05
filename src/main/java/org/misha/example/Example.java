@@ -1,8 +1,8 @@
 package org.misha.example;
 
 import org.apache.log4j.Logger;
-import org.misha.logical.evaluator.StrictEvaluator;
 import org.misha.logical.Node;
+import org.misha.logical.evaluator.BoolNodeProcessor;
 import org.misha.util.PropertiesReader;
 
 import java.io.*;
@@ -34,7 +34,7 @@ public class Example {
     }
 
     @SuppressWarnings("javadoc")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Example example = new Example();
         for (Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
@@ -46,23 +46,23 @@ public class Example {
         }
     }
 
-    private StrictEvaluator evaluator(byte var, final File file) {
-        StrictEvaluator result;
+    private BoolNodeProcessor evaluator(byte var, final File file) {
+        BoolNodeProcessor result;
         switch (var) {
             case PATH:
-                result = new StrictEvaluator() {
+                result = new BoolNodeProcessor() {
 
                     @Override
-                    public boolean[] evaluateLeaf(Node<String> leaf) {
-                        return new boolean[]{file.getAbsolutePath().contains(leaf.getContent())};
+                    public boolean evaluateLeaf(Node<String> leaf) {
+                        return file.getAbsolutePath().contains(leaf.getContent());
                     }
                 };
                 break;
             case CONTENT:
-                result = new StrictEvaluator() {
+                result = new BoolNodeProcessor() {
 
                     @Override
-                    public boolean[] evaluateLeaf(Node<String> leaf) {
+                    public boolean evaluateLeaf(Node<String> leaf) {
                         InputStream is = null;
                         StringBuilder sb = null;
                         try {
@@ -86,7 +86,7 @@ public class Example {
                             }
                         }
                         if (sb != null) {
-                            return new boolean[]{sb.toString().contains(leaf.getContent())};
+                            return sb.toString().contains(leaf.getContent());
                         }
                         throw new IllegalStateException("sb must be not null");
                     }
@@ -101,10 +101,10 @@ public class Example {
     }
 
     @SuppressWarnings("javadoc")
-    public void search(final File file) {
+    public void search(final File file) throws Exception {
         if (file.isFile()) {
-            if (evaluator(PATH, file).getValue(pathRule)) {
-                if (evaluator(CONTENT, file).getValue(contentRule)) {
+            if (evaluator(PATH, file).evaluate(pathRule)) {
+                if (evaluator(CONTENT, file).evaluate(contentRule)) {
                     results.add(file.getAbsolutePath());
                 }
             }
