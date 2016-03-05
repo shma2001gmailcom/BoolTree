@@ -7,15 +7,14 @@ import org.misha.logical.Node;
 import java.security.SecureRandom;
 import java.util.Calendar;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
 /**
  * Author: mshevelin Date: 7/17/12 Time: 5:48 PM
  */
-public class StrictEvaluatorTest {
-    private static final Logger log = Logger.getLogger(StrictEvaluatorTest.class);
-    private static final int ITERATIONS = 100000;
+public class BoolNodeProcessorTest {
+    private static final Logger log = Logger.getLogger(BoolNodeProcessorTest.class);
+    private static final int ITERATIONS = 1000000;
 
     /*
      * The expression !((!x || y) && (!y || z)) || (!x || z) is true for each
@@ -23,13 +22,13 @@ public class StrictEvaluatorTest {
 	 */
     @SuppressWarnings("javadoc")
     @Test
-    public void testEvaluate() {
+    public void testEvaluate() throws Exception {
         boolean result = true;
-        StrictEvaluator e = new StrictEvaluator() {
+        BoolNodeProcessor e = new BoolNodeProcessor() {
 
             @Override
-            public boolean[] evaluateLeaf(Node<String> leaf) {
-                return new boolean[]{Boolean.valueOf(leaf.getContent())};
+            public boolean evaluateLeaf(Node<String> leaf) {
+                return Boolean.valueOf(leaf.getContent());
             }
         };
         long begin = Calendar.getInstance().getTimeInMillis();
@@ -52,9 +51,9 @@ public class StrictEvaluatorTest {
             String xyandyz = "(" + xy + yz + "AND)";
             // ((x ==> y) & (y ==> z)) ==> (x ==> z)
             String xyandyzimpliesxz = "((" + xyandyz + "NOT)" + xz + "OR)";
-            boolean[] result1 = e.evaluate(xyandyzimpliesxz);
-            assertEquals(result1.length, 1);
-            result &= result1[0];
+            boolean result1 = e.evaluate(xyandyzimpliesxz);
+
+            result &= result1;
         }
         long end = Calendar.getInstance().getTimeInMillis() - begin;
         log.info(result + "\n Estimate iteration time is " + ((double) end / ((double) ITERATIONS)) + " ms");
