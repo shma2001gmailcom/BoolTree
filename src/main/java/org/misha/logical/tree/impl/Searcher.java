@@ -2,26 +2,40 @@ package org.misha.logical.tree.impl;
 
 import org.misha.logical.Node;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * Author: mshevelin Date: 10/24/11 Time: 10:03 AM
  */
-public class Searcher {
-    private final Node<String> root;
+public abstract class Searcher<T> implements Iterable<Node<T>> {
+    private final Node<T> root;
+    private final Set<Node<T>> results = new HashSet<Node<T>>();
 
-    public Searcher(final Node<String> tree) {
+    public Searcher(final Node<T> tree) {
         root = tree;
     }
 
-    public final Node<String> search(final Object o) {
-        Node<String> node;
-        Queue<String> queue = new Queue<String>();
+    public void search() {
+        Node<T> node;
+        Queue<T> queue = new Queue<T>();
         queue.add(root);
         while (!queue.isEmpty()) {
             node = queue.pop();
-            if (node.getContent().equals(o)) {
-                return node;
+            if (isSuitable(node)) {
+                results.add(node);
             }
         }
-        return null;
     }
+
+    public Iterator<Node<T>> iterator() {
+        return results.iterator();
+    }
+
+    public int size() {
+        return results.size();
+    }
+
+    public abstract boolean isSuitable(Node<T> node);
 }
