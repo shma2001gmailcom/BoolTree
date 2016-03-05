@@ -9,40 +9,28 @@ import java.util.Collection;
  */
 public interface Node<T> {
 
-    @SuppressWarnings("javadoc")
     Node<T> getParent();
 
-    @SuppressWarnings("javadoc")
     void setParent(Node<T> n);
 
-    @SuppressWarnings("javadoc")
     Collection<Node<T>> getChildren();
 
-    @SuppressWarnings("javadoc")
     void setDepth(int depth);
 
-    @SuppressWarnings("javadoc")
     T getContent();
 
-    @SuppressWarnings("javadoc")
     void setContent(T f);
 
-    @SuppressWarnings("javadoc")
     void addChild(Node<T> child);
 
-    @SuppressWarnings("javadoc")
     boolean isLeaf();
 
-    @SuppressWarnings("javadoc")
     boolean isRoot();
 
-    @SuppressWarnings("javadoc")
     boolean removeChild(Node<T> n);
 
-    @SuppressWarnings("javadoc")
     Object getName();
 
-    @SuppressWarnings("javadoc")
     void setName(String s);
 
     /**

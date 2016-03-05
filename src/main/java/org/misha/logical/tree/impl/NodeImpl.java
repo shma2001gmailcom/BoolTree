@@ -1,6 +1,5 @@
 package org.misha.logical.tree.impl;
 
-import org.apache.log4j.Logger;
 import org.misha.logical.Node;
 
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
  * @param <T> type of content
  */
 public class NodeImpl<T> implements Node<T> {
-    private static final Logger log = Logger.getLogger(NodeImpl.class);
     private final ArrayList<Node<T>> children;
     private Node<T> parent;
     private T content;
@@ -89,7 +87,7 @@ public class NodeImpl<T> implements Node<T> {
     }
 
     @Override
-    public void setName(String n) {// to override name
+    public void setName(String n) {
         name = n;
     }
 

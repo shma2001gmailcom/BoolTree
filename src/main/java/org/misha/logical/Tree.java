@@ -11,10 +11,4 @@ public interface Tree<T> {
      * @return the root of the org.misha.logical.tree
      */
     Node<T> root();
-
-    /**
-     * @return org.misha.logical.tree iterator
-     */
-    @SuppressWarnings("rawtypes")
-    Iterator<Node> iterator();
 }

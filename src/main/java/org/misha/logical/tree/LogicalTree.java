@@ -83,12 +83,12 @@ public class LogicalTree {
             } else if (c == ')') {
                 if (parent != null) {
                     parent.setContent(s);
-                    parent.setName(s); // for String.equals() test control
+                    parent.setName(s);
                     if (parent.getParent() != null) {
                         parent = parent.getParent();
                     }
                 }
-                s = "";// clear s
+                s = "";
             } else {
                 if (c != ' ') {
                     s += c;

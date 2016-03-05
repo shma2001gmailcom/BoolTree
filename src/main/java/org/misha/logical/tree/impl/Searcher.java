@@ -8,12 +8,10 @@ import org.misha.logical.Node;
 public class Searcher {
     private final Node<String> root;
 
-    @SuppressWarnings("javadoc")
     public Searcher(final Node<String> tree) {
         root = tree;
     }
 
-    @SuppressWarnings("javadoc")
     public final Node<String> search(final Object o) {
         Node<String> node;
         Queue<String> queue = new Queue<String>();

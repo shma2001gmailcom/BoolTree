@@ -1,9 +1,7 @@
 package org.misha.logical.tree.impl;
 
-import org.apache.log4j.Logger;
 import org.misha.logical.Node;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 /**
@@ -12,8 +10,6 @@ import java.util.LinkedList;
  * @param <T> a type of queue nodes content
  */
 public final class Queue<T> {
-    @SuppressWarnings("unused")
-    private static final Logger log = Logger.getLogger(Queue.class);
     private final LinkedList<Node<T>> list = new LinkedList<Node<T>>();
 
     /**
@@ -32,11 +28,6 @@ public final class Queue<T> {
      */
     public void add(final Node<T> n) {
         list.add(n);
-    }
-
-    @SuppressWarnings("unused")
-    private void addAll(final Collection<Node<T>> c) {
-        list.addAll(c);
     }
 
     /**
