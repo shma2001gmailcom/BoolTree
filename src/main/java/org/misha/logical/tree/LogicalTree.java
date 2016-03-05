@@ -8,6 +8,8 @@ import org.misha.logical.tree.impl.TreeImpl;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 /**
  * Author: misha shevelin
  * Date: 1/28/12
@@ -36,6 +38,9 @@ import java.util.List;
  * Note that each parenthesis has a meaning.
  */
 public class LogicalTree {
+    public static final char LEFT_PARENTHESIS = '(';
+    public static final char RIGHTT_PARENTHESIS = ')';
+    public static final char WHITESPACE = ' ';
     private static final Logger log = Logger.getLogger(LogicalTree.class);
     private final List<Character> list = new LinkedList<Character>();
 
@@ -48,22 +53,18 @@ public class LogicalTree {
         }
     }
 
-    // checks are parenthesises correct
     private boolean isCorrect() {
         int level = 0;
         for (Character c : list) {
-            if (c == ')') {
+            if (c == RIGHTT_PARENTHESIS) {
                 level--;
-            } else if (c == '(') {
+            } else if (c == LEFT_PARENTHESIS) {
                 level++;
             }
         }
         return level == 0;
     }
 
-    /**
-     * @return evaluation org.misha.logical.tree
-     */
     public Tree<String> makeTree() {
         if (!isCorrect()) {
             log.error("parenthesizes does not match. check input.");
@@ -71,33 +72,37 @@ public class LogicalTree {
         }
         Node<String> node = null;
         Node<String> parent = null;
-        String s = "";
+        String s = EMPTY;
         while (!list.isEmpty()) {
             char c = list.remove(0);
-            if (c == '(') {
-                node = new NodeImpl<String>(s);
-                if (parent != null) {
-                    parent.addChild(node);
-                }
-                parent = node;
-            } else if (c == ')') {
-                if (parent != null) {
-                    parent.setContent(s);
-                    parent.setName(s); // for String.equals() test control
-                    if (parent.getParent() != null) {
-                        parent = parent.getParent();
+            switch (c) {
+                case LEFT_PARENTHESIS:
+                    node = new NodeImpl<String>(s);
+                    if (parent != null) {
+                        parent.addChild(node);
                     }
-                }
-                s = "";// clear s
-            } else {
-                if (c != ' ') {
-                    s += c;
-                }
+                    parent = node;
+                    break;
+                case RIGHTT_PARENTHESIS:
+                    if (parent != null) {
+                        parent.setContent(s);
+                        parent.setName(s);
+                        if (parent.getParent() != null) {
+                            parent = parent.getParent();
+                        }
+                    }
+                    s = EMPTY;
+                    break;
+                default:
+                    if (c != WHITESPACE) {
+                        s += c;
+                    }
+                    break;
             }
         }
         if (node != null) {
             while (!node.isRoot()) {
-                node = node.getParent();// achieve the root
+                node = node.getParent();
             }
         }
         return new TreeImpl<String>(node);

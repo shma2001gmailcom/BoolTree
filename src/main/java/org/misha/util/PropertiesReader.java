@@ -44,7 +44,7 @@ public final class PropertiesReader {
             it = lineIterator(properties, "UTF-8");
             result = iterate(it);
         } catch (IOException e) {
-            log.fatal("file not found\n" + e);
+            log.fatal(String.format("file not found\n%s", e));
         } finally {
             closeQuietly(it);
         }

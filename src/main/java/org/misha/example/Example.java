@@ -1,11 +1,14 @@
 package org.misha.example;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.misha.logical.evaluator.StrictEvaluator;
 import org.misha.logical.Node;
+import org.misha.logical.evaluator.BoolNodeProcessor;
 import org.misha.util.PropertiesReader;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -20,9 +23,6 @@ public class Example {
     private final String pathRule, contentRule;
     private final LinkedList<String> results = new LinkedList<String>();
 
-    /**
-     * public constructor
-     */
     public Example() {
         log.info("=================Path Criteria=====================");
         log.info(PropertiesReader.getProperty("path"));
@@ -33,8 +33,7 @@ public class Example {
         contentRule = PropertiesReader.getProperty("content");
     }
 
-    @SuppressWarnings("javadoc")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Example example = new Example();
         for (Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
@@ -46,71 +45,68 @@ public class Example {
         }
     }
 
-    private StrictEvaluator evaluator(byte var, final File file) {
-        StrictEvaluator result;
-        switch (var) {
+    private static boolean containsGoal(final Node<String> leaf, final File file) {
+        final StringBuilder sb = readContent(file);
+        if (sb != null) {
+            return sb.toString().contains(leaf.getContent());
+        }
+        throw new IllegalStateException("sb must be not null");
+    }
+
+    private static StringBuilder readContent(final File file) {
+        InputStream is = null;
+        StringBuilder sb = null;
+        try {
+            is = new FileInputStream(file.getAbsolutePath());
+            sb = new StringBuilder();
+            int b;
+            while ((b = is.read()) != -1) {
+                sb = sb.append((char) b);
+            }
+        } catch (Exception e) {
+            log.error(e);
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
+        return sb;
+    }
+
+    private BoolNodeProcessor evaluator(byte mode, final File file) {
+        BoolNodeProcessor result;
+        switch (mode) {
             case PATH:
-                result = new StrictEvaluator() {
+                result = new BoolNodeProcessor() {
 
                     @Override
-                    public boolean[] evaluateLeaf(Node<String> leaf) {
-                        return new boolean[]{file.getAbsolutePath().contains(leaf.getContent())};
+                    public boolean evaluateLeaf(Node<String> leaf) {
+                        return file.getAbsolutePath().contains(leaf.getContent());
                     }
                 };
                 break;
             case CONTENT:
-                result = new StrictEvaluator() {
+                result = new BoolNodeProcessor() {
 
                     @Override
-                    public boolean[] evaluateLeaf(Node<String> leaf) {
-                        InputStream is = null;
-                        StringBuilder sb = null;
-                        try {
-                            is = new FileInputStream(file.getAbsolutePath());
-                            sb = new StringBuilder();
-                            int b;
-                            while ((b = is.read()) != -1) {
-                                sb = sb.append((char) b);
-                            }
-                        } catch (FileNotFoundException e) {
-                            log.error(e);
-                        } catch (IOException e) {
-                            log.error(e);
-                        } finally {
-                            if (is != null) {
-                                try {
-                                    is.close();
-                                } catch (IOException e) {
-                                    log.error(e);
-                                }
-                            }
-                        }
-                        if (sb != null) {
-                            return new boolean[]{sb.toString().contains(leaf.getContent())};
-                        }
-                        throw new IllegalStateException("sb must be not null");
+                    public boolean evaluateLeaf(Node<String> leaf) {
+                        return containsGoal(leaf, file);
                     }
                 };
                 break;
             default:
-                throw new IllegalArgumentException(
-                        "org.misha.logical.evaluator() admits only two values as its first argument."
-                );
+                throw new IllegalArgumentException("evaluator() admits only two values as its first argument.");
         }
         return result;
     }
 
-    @SuppressWarnings("javadoc")
-    public void search(final File file) {
+    public void search(final File file) throws Exception {
         if (file.isFile()) {
-            if (evaluator(PATH, file).getValue(pathRule)) {
-                if (evaluator(CONTENT, file).getValue(contentRule)) {
+            if (evaluator(PATH, file).evaluate(pathRule)) {
+                if (evaluator(CONTENT, file).evaluate(contentRule)) {
                     results.add(file.getAbsolutePath());
                 }
             }
         } else {
-            File[] listFiles;
-            listFiles = file.listFiles();
+            File[] listFiles = file.listFiles();
             if (listFiles != null) {
                 for (File f : listFiles) {
                     search(f);
@@ -119,7 +115,6 @@ public class Example {
         }
     }
 
-    @SuppressWarnings("javadoc")
     public LinkedList<String> getResults() {
         return results;
     }

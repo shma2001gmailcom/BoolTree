@@ -5,7 +5,9 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * Author: mshevelin Date: 7/18/12 Time: 10:31 AM
+ * Author: mshevelin
+ * Date: 7/18/12
+ * Time: 10:31 AM
  */
 public class TokenizerTest {
     @SuppressWarnings("javadoc")
@@ -18,7 +20,7 @@ public class TokenizerTest {
         t.addToken("(").addToken(")").addToken("a").addToken("b").addToken("c").saw();
         StringBuilder sb = new StringBuilder();
         for (String s1 : t.getSawn()) {
-            sb = sb.append("\n" + s1 + "\n");
+            sb = sb.append("\n").append(s1).append("\n");
         }
         String actual = sb.toString();
         actual = actual.substring(1, actual.length() - 1);

@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.Set;
 
 /**
- * Author: mshevelin Date: 2/2/12 Time: 9:30 AM
+ * Author: mshevelin
+ * Date: 2/2/12
+ * Time: 9:30 AM
  */
 public class Tokenizer {
     private static final Logger log = Logger.getLogger(Tokenizer.class);

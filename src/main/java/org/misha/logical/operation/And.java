@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import static org.misha.logical.operation.Or.or;
 
 /**
- * Author: mshevelin Date: 2/2/12 Time: 5:07 PM
+ * Author: mshevelin
+ * Date: 2/2/12
+ * Time: 5:07 PM
  * <p/>
  * Operation and.
  *
@@ -29,7 +31,7 @@ public final class And implements Operation<Boolean, Boolean> {
     @Override
     public Boolean proceed(final LinkedList<Boolean> args) throws IllegalArgumentException {
         final LinkedList<Boolean> anotherArgs = new LinkedList<Boolean>();
-        for (Boolean x : args) {
+        for (final Boolean x : args) {
             if (x == null) {
                 throw new IllegalArgumentException("Null arguments is not supported.");
             }

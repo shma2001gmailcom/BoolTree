@@ -26,7 +26,6 @@ public class LogicalTreeTest extends TestCase {
         s = null;
     }
 
-    @SuppressWarnings("javadoc")
     public void testMakeTree1() throws Exception {
         s = "((a) NOT)";
         LogicalTree bt1 = new LogicalTree(s);
@@ -34,7 +33,6 @@ public class LogicalTreeTest extends TestCase {
         assertEquals(actual, expected1);
     }
 
-    @SuppressWarnings("javadoc")
     public void testMakeTree2() throws Exception {
         s = "(RESULT)((a) (b) (c) OR)";
         LogicalTree bt2 = new LogicalTree(s);
@@ -42,7 +40,6 @@ public class LogicalTreeTest extends TestCase {
         assertEquals(actual, expected2);
     }
 
-    @SuppressWarnings("javadoc")
     public void testMakeTree3() throws Exception {
         s = "(RESULT)((a) (b) (c) AND)";
         LogicalTree bt3 = new LogicalTree(s);
@@ -50,20 +47,18 @@ public class LogicalTreeTest extends TestCase {
         assertEquals(actual, expected3);
     }
 
-    @SuppressWarnings("javadoc")
     public void testMakeTree() throws Exception {
-        s = "(RESULT)" + "(" + "   ((x) (y) (z) OR) NOT) " + "   (((c) (((a) NOT) (b) AND) OR) " + "  NOT" + ")";
+        s = "(RESULT)(   ((x) (y) (z) OR) NOT)    (((c) (((a) NOT) (b) AND) OR)   NOT)";
         LogicalTree bt = new LogicalTree(s);
         String actual = bt.makeTree().toString().trim();
         assertEquals(actual, expected);
     }
 
-    @SuppressWarnings("javadoc")
     public void testMakeTreeStep_By_Step() {
         String s1 = "((x) NOT)";
         String s2 = "((y)(z) OR)";
-        String s3 = "(" + s1 + s2 + "AND" + ")";
-        String result = "(RESULT)" + s3;
+        String s3 = String.format("(%s%sAND)", s1, s2);
+        String result = String.format("(RESULT)%s", s3);
         LogicalTree btSbS = new LogicalTree(result);
         String actual = btSbS.makeTree().toString().trim();
         assertEquals(actual, "RESULT->[AND->[NOT->[x], OR->[y, z]]]");

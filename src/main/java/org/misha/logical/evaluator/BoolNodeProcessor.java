@@ -12,7 +12,6 @@ import java.util.LinkedList;
  */
 public abstract class BoolNodeProcessor implements Evaluator<Boolean> {
 
-    // works 3 times faster than BoolEvaluator
     private boolean evaluate(final Node<String> node) {
         if (node.isLeaf()) {
             return evaluateLeaf(node);
@@ -31,15 +30,7 @@ public abstract class BoolNodeProcessor implements Evaluator<Boolean> {
     }
 
     /**
-     * @param s expression
-     * @return boolean value of the expression
-     */
-    public boolean getValue(final String s) throws Exception {
-        return evaluate(s);
-    }
-
-    /**
-     * This method ought to be overridden in subclasses to implement
+     * This method should be overridden to implement
      * appropriate behaviour of org.misha.logical.evaluator.
      *
      * @param leaf the node which should be evaluated by business rules.

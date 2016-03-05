@@ -1,17 +1,17 @@
 package org.misha.logical.tree.impl;
 
-import org.apache.log4j.Logger;
 import org.misha.logical.Node;
 
 import java.util.ArrayList;
 
 /**
- * Created by IntelliJ IDEA. User: user Date: 05.11.11 Time: 11:43
+ * author: misha
+ * date: 05.11.11
+ * time: 11:43
  *
  * @param <T> type of content
  */
 public class NodeImpl<T> implements Node<T> {
-    private static final Logger log = Logger.getLogger(NodeImpl.class);
     private final ArrayList<Node<T>> children;
     private Node<T> parent;
     private T content;
@@ -21,12 +21,11 @@ public class NodeImpl<T> implements Node<T> {
     /**
      * @param c a content of the node
      */
-    public NodeImpl(T c) {
+    public NodeImpl(final T c) {
         depth = 0;
         children = new ArrayList<Node<T>>();
         parent = null;
         content = c;
-        name = "Node(" + c.toString() + ")";
     }
 
     @Override
@@ -76,9 +75,6 @@ public class NodeImpl<T> implements Node<T> {
         return parent == null;
     }
 
-    /**
-     * @return name
-     */
     public final String name() {
         return name;
     }
@@ -89,7 +85,7 @@ public class NodeImpl<T> implements Node<T> {
     }
 
     @Override
-    public void setName(String n) {// to override name
+    public void setName(String n) {
         name = n;
     }
 

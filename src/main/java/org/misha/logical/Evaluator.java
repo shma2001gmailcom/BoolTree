@@ -1,7 +1,9 @@
 package org.misha.logical;
 
 /**
- * Author: mshevelin Date: 8/6/12 Time: 12:30 PM
+ * Author: mshevelin
+ * Date: 8/6/12
+ * Time: 12:30 PM
  * <p/>
  * Evaluates strings pretend to be an expression.
  *

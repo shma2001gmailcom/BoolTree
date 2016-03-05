@@ -20,7 +20,7 @@ public enum Operations {
                 put("NOT", Not.not());
             }};
 
-    public Operation<Boolean, Boolean> findBy(String name) {
+    public Operation<Boolean, Boolean> findBy(final String name) {
         return operations.get(name.toUpperCase());
     }
 }

@@ -16,11 +16,10 @@ public class BoolNodeProcessorTest {
     private static final Logger log = Logger.getLogger(BoolNodeProcessorTest.class);
     private static final int ITERATIONS = 1000000;
 
-    /*
+    /**
      * The expression !((!x || y) && (!y || z)) || (!x || z) is true for each
 	 * boolean x, y, z.
 	 */
-    @SuppressWarnings("javadoc")
     @Test
     public void testEvaluate() throws Exception {
         boolean result = true;
@@ -34,29 +33,27 @@ public class BoolNodeProcessorTest {
         long begin = Calendar.getInstance().getTimeInMillis();
         final SecureRandom random = new SecureRandom();
         for (int i = 0; i < ITERATIONS; ++i) {
-            // log.info("              " + i);
             String xS = String.valueOf(random.nextBoolean());
-            xS = "(" + xS + ")";
+            xS = String.format("(%s)", xS);
             String yS = String.valueOf(random.nextBoolean());
-            yS = "(" + yS + ")";
+            yS = String.format("(%s)", yS);
             String zS = String.valueOf(random.nextBoolean());
-            zS = "(" + zS + ")";
+            zS = String.format("(%s)", zS);
             // x ==> y
-            String xy = "((" + xS + "NOT)" + yS + "OR)";
+            String xy = String.format("((%sNOT)%sOR)", xS, yS);
             // y ==> z
-            String yz = "((" + yS + "NOT)" + zS + "OR)";
+            String yz = String.format("((%sNOT)%sOR)", yS, zS);
             // x ==> z
-            String xz = "((" + xS + "NOT)" + zS + "OR)";
+            String xz = String.format("((%sNOT)%sOR)", xS, zS);
             // (x ==> y) & (y ==> z)
-            String xyandyz = "(" + xy + yz + "AND)";
+            String xyandyz = String.format("(%s%sAND)", xy, yz);
             // ((x ==> y) & (y ==> z)) ==> (x ==> z)
-            String xyandyzimpliesxz = "((" + xyandyz + "NOT)" + xz + "OR)";
+            String xyandyzimpliesxz = String.format("((%sNOT)%sOR)", xyandyz, xz);
             boolean result1 = e.evaluate(xyandyzimpliesxz);
-
             result &= result1;
         }
         long end = Calendar.getInstance().getTimeInMillis() - begin;
-        log.info(result + "\n Estimate iteration time is " + ((double) end / ((double) ITERATIONS)) + " ms");
+        log.info(String.format("%s\n Estimate iteration time is %s ms", result, (double) end / ((double) ITERATIONS)));
         assertTrue(result);
     }
 }
