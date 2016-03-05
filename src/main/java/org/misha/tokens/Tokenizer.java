@@ -1,7 +1,5 @@
 package org.misha.tokens;
 
-import org.apache.log4j.Logger;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -10,7 +8,6 @@ import java.util.Set;
  * Author: mshevelin Date: 2/2/12 Time: 9:30 AM
  */
 public class Tokenizer {
-    private static final Logger log = Logger.getLogger(Tokenizer.class);
     private final LinkedList<Character> list = new LinkedList<Character>();
     private final Set<String> tokens = new HashSet<String>();
     private final LinkedList<String> sawn = new LinkedList<String>();
@@ -69,9 +66,6 @@ public class Tokenizer {
                 sawn.addLast(s);
                 sb = sb.delete(0, sb.length());
             }
-        }
-        for (String t : sawn) {
-            log.info(t + "\n");
         }
     }
 }

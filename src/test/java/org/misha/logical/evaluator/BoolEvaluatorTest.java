@@ -14,7 +14,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class BoolEvaluatorTest {
     private static final Logger log = Logger.getLogger(BoolEvaluatorTest.class);
-    private static final int ITERATIONS = 100000;
+    private static final int ITERATIONS = 1000000;
 
     @SuppressWarnings("javadoc")
     @Test
@@ -40,8 +40,7 @@ public class BoolEvaluatorTest {
             result &= e.evaluate(xyandyzimpliesxz);
         }
         long end = Calendar.getInstance().getTimeInMillis() - begin;
-        log.info(result + "\n Estimate iteration time =" + ((double) end / ((double) ITERATIONS)));
-        log.info(result);
+        log.info("Estimate iteration time=" + ((double) end / ((double) ITERATIONS)));
         assertTrue(result);
     }
 }

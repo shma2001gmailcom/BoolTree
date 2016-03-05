@@ -15,7 +15,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class StrictEvaluatorTest {
     private static final Logger log = Logger.getLogger(StrictEvaluatorTest.class);
-    private static final int ITERATIONS = 100000;
+    private static final int ITERATIONS = 1000000;
 
     /*
      * The expression !((!x || y) && (!y || z)) || (!x || z) is true for each
@@ -57,7 +57,7 @@ public class StrictEvaluatorTest {
             result &= result1[0];
         }
         long end = Calendar.getInstance().getTimeInMillis() - begin;
-        log.info(result + "\n Estimate iteration time is " + ((double) end / ((double) ITERATIONS)) + " ms");
+        log.info("Estimate iteration time=" + ((double) end / ((double) ITERATIONS)));
         assertTrue(result);
     }
 }
