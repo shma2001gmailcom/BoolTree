@@ -74,7 +74,7 @@ public class NodeImpl<T> implements Node<T> {
     /**
      * @return name
      */
-    public final String name() {
+    final String name() {
         return name;
     }
 
@@ -86,21 +86,6 @@ public class NodeImpl<T> implements Node<T> {
     @Override
     public void setName(String n) {
         name = n;
-    }
-
-    @Override
-    public boolean removeChild(Node<T> n) {
-        if (children.contains(n)) {
-            if (n.isLeaf()) {
-                return children.remove(n);
-            } else {
-                for (Node<T> n1 : n.getChildren()) {
-                    n.removeChild(n1);
-                }
-                return children.remove(n);
-            }
-        }
-        return false;
     }
 
     @Override

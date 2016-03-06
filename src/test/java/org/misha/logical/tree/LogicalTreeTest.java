@@ -59,7 +59,7 @@ public class LogicalTreeTest extends TestCase {
     }
 
     @SuppressWarnings("javadoc")
-    public void testMakeTreeStep_By_Step() {
+    public void testMakeTreeStepByStep() {
         String s1 = "((x) NOT)";
         String s2 = "((y)(z) OR)";
         String s3 = "(" + s1 + s2 + "AND" + ")";

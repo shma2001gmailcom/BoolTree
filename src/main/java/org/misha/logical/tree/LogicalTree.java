@@ -50,7 +50,7 @@ public class LogicalTree {
 
     private boolean isCorrect() {
         int level = 0;
-        for (Character c : list) {
+        for (final Character c : list) {
             if (c == ')') {
                 level--;
             } else if (c == '(') {

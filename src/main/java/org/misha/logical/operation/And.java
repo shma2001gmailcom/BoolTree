@@ -26,7 +26,7 @@ public final class And implements Operation<Boolean, Boolean> {
     @Override
     public Boolean proceed(final LinkedList<Boolean> args) throws IllegalArgumentException {
         final LinkedList<Boolean> anotherArgs = new LinkedList<Boolean>();
-        for (Boolean x : args) {
+        for (final Boolean x : args) {
             if (x == null) {
                 throw new IllegalArgumentException("Null arguments is not supported.");
             }

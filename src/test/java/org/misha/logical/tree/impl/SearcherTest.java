@@ -25,11 +25,14 @@ public class SearcherTest {
         node10.addChild(node101);
         node100.addChild(node1000);
         node100.addChild(node1001);
-        search(root, ".*(01).*");
+        search(root, "01", 2);
+        search(root, "10", 5);
+        search(root, "100", 3);
+        search(root, "1000", 1);
     }
 
-    private void search(final Node<String> root, final String toSearch) {
-        final Pattern pattern = Pattern.compile(toSearch);
+    private void search(final Node<String> root, final String toSearch, int occurs) {
+        final Pattern pattern = Pattern.compile(".*(" + toSearch + ").*");
         final Searcher<String> searcher = new Searcher<String>(root) {
 
             @Override
@@ -39,9 +42,9 @@ public class SearcherTest {
             }
         };
         searcher.search();
-        assertTrue(searcher.size() == 2);
+        assertTrue(searcher.size() == occurs);
         for (Node<String> node : searcher) {
-            assertTrue(node.getContent().contains("01"));
+            assertTrue(node.getContent().contains(toSearch));
         }
     }
 }

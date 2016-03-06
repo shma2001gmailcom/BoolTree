@@ -27,8 +27,6 @@ public interface Node<T> {
 
     boolean isRoot();
 
-    boolean removeChild(Node<T> n);
-
     Object getName();
 
     void setName(String s);

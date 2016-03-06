@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 appname='BracketTree-01'
+jarname='bool-tree'
 appfolder="/home/misha/workspace/"${appname}
 M2_HOME='/opt/apache-maven-3.2.2/'
 export M2_HOME
@@ -24,7 +25,7 @@ mkdir ${appfolder}/dist
 mkdir ${appfolder}/dist/resources
 echo ===================================================
 echo make distribution folder...
-cp  ${appfolder}/target/bool.jar ${appfolder}/dist/bool.jar
+cp  ${appfolder}/target/${jarname}.jar ${appfolder}/dist/${jarname}.jar
 cp -r ${appfolder}/src/main/resources/rule.properties ${appfolder}/dist/resources
 cp -r ${appfolder}/target/dependency-jars ${appfolder}/dist
 echo ===================================================
@@ -33,7 +34,7 @@ cd ${appfolder}/dist
 echo ===================================================
 echo let\'s taste it...
 echo ===================================================
-java -jar bool.jar
+java -jar ${jarname}.jar
 
 
 

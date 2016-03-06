@@ -21,7 +21,7 @@ public final class Not implements Operation<Boolean, Boolean> {
     }
 
     @Override
-    public Boolean proceed(LinkedList<Boolean> args) throws IllegalArgumentException {
+    public Boolean proceed(final LinkedList<Boolean> args) throws IllegalArgumentException {
         if (args.size() != 1) {
             throw new IllegalArgumentException("NOT must have exactly one argument.");
         }

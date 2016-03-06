@@ -9,7 +9,7 @@ import java.util.LinkedList;
  *
  * @param <T> a type of queue nodes content
  */
-public final class Queue<T> {
+final class Queue<T> {
     private final LinkedList<Node<T>> list = new LinkedList<Node<T>>();
 
     public Node<T> pop() {

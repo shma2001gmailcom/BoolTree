@@ -1,6 +1,5 @@
 package org.misha.logical.evaluator;
 
-import org.misha.logical.Evaluator;
 import org.misha.logical.Node;
 import org.misha.logical.operation.Operations;
 import org.misha.logical.tree.LogicalTree;
@@ -10,21 +9,20 @@ import java.util.LinkedList;
 /**
  * @author misha
  */
-public abstract class BoolNodeProcessor implements Evaluator<Boolean> {
+public abstract class BoolNodeProcessor {
 
     private boolean evaluate(final Node<String> node) {
         if (node.isLeaf()) {
             return evaluateLeaf(node);
         } else {
-            LinkedList<Boolean> args = new LinkedList<Boolean>();
+            final LinkedList<Boolean> args = new LinkedList<Boolean>();
             for (Node<String> child : node.getChildren()) {
                 args.add(evaluate(child));
             }
-            return Operations.OPERATIONS.findBy(node.getContent()).proceed(args);
+            return Operations.OPERATIONS.get(node.getContent()).proceed(args);
         }
     }
 
-    @Override
     public Boolean evaluate(final String s) {
         return evaluate(new LogicalTree(s).makeTree().root());
     }

@@ -12,14 +12,14 @@ import static junit.framework.Assert.assertTrue;
 /**
  * Author: mshevelin Date: 7/17/12 Time: 5:48 PM
  */
-public class StrictEvaluatorTest {
-    private static final Logger log = Logger.getLogger(StrictEvaluatorTest.class);
+public class BoolNodeEvaluatorTest {
+    private static final Logger log = Logger.getLogger(BoolNodeEvaluatorTest.class);
     private static final int ITERATIONS = 1000000;
 
-    /*
+    /**
      * The expression !((!x || y) && (!y || z)) || (!x || z) is true for each
-	 * boolean x, y, z.
-	 */
+     * boolean x, y, z.
+     */
     @Test
     public void testEvaluate() throws Exception {
         boolean result = true;
@@ -33,7 +33,6 @@ public class StrictEvaluatorTest {
         long begin = Calendar.getInstance().getTimeInMillis();
         final SecureRandom random = new SecureRandom();
         for (int i = 0; i < ITERATIONS; ++i) {
-            // log.info("              " + i);
             String xS = String.valueOf(random.nextBoolean());
             xS = "(" + xS + ")";
             String yS = String.valueOf(random.nextBoolean());

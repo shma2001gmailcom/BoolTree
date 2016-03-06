@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Author: mshevelin Date: 10/24/11 Time: 10:03 AM
  */
-public abstract class Searcher<T> implements Iterable<Node<T>> {
+abstract class Searcher<T> implements Iterable<Node<T>> {
     private final Node<T> root;
     private final Set<Node<T>> results = new HashSet<Node<T>>();
 
