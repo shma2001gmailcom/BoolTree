@@ -51,25 +51,21 @@ public class LogicalTree {
     private boolean isCorrect() {
         int level = 0;
         for (final Character c : list) {
-            if (c == ')') {
-                level--;
-            } else if (c == '(') {
-                level++;
-            }
+            level += c == ')' ? -1 : c == '(' ? 1 : 0;
         }
         return level == 0;
     }
 
     public Tree<String> makeTree() {
         if (!isCorrect()) {
-            log.error("parenthesizes does not match. check input.");
+            log.error("parenthesizes do not match, check input.");
             return null;
         }
         Node<String> node = null;
         Node<String> parent = null;
         String s = "";
         while (!list.isEmpty()) {
-            char c = list.remove(0);
+            final char c = list.remove(0);
             if (c == '(') {
                 node = new NodeImpl<String>(s);
                 if (parent != null) {
@@ -80,8 +76,9 @@ public class LogicalTree {
                 if (parent != null) {
                     parent.setContent(s);
                     parent.setName(s);
-                    if (parent.getParent() != null) {
-                        parent = parent.getParent();
+                    final Node<String> grandFather = parent.getParent();
+                    if (grandFather != null) {
+                        parent = grandFather;
                     }
                 }
                 s = "";
