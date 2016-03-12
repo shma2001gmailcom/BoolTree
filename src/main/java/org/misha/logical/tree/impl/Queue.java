@@ -13,7 +13,7 @@ final class Queue<T> {
     private final LinkedList<Node<T>> list = new LinkedList<Node<T>>();
 
     public Node<T> pop() {
-        Node<T> node = list.pop();
+        final Node<T> node = list.pop();
         if (!node.isLeaf()) {
             list.addAll(node.getChildren());
         }
