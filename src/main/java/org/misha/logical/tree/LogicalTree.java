@@ -48,6 +48,33 @@ public class LogicalTree {
         }
     }
 
+    private static String changeContent(String s, final char c) {
+        if (c != ' ') {
+            s += c;
+        }
+        return s;
+    }
+
+    private static Node<String> initNode(Node<String> node, final String s) {
+        if (node != null) {
+            node.setContent(s);
+            node.setName(s);
+            final Node<String> parent = node.getParent();
+            if (parent != null) {
+                node = parent;
+            }
+        }
+        return node;
+    }
+
+    private static Node<String> createNode(final Node<String> parent, final String s) {
+        final Node<String> node = new NodeImpl<String>(s);
+        if (parent != null) {
+            parent.addChild(node);
+        }
+        return node;
+    }
+
     private boolean isCorrect() {
         int level = 0;
         for (final Character c : list) {
@@ -67,31 +94,17 @@ public class LogicalTree {
         while (!list.isEmpty()) {
             final char c = list.remove(0);
             if (c == '(') {
-                node = new NodeImpl<String>(s);
-                if (parent != null) {
-                    parent.addChild(node);
-                }
+                node = createNode(parent, s);
                 parent = node;
             } else if (c == ')') {
-                if (parent != null) {
-                    parent.setContent(s);
-                    parent.setName(s);
-                    final Node<String> grandFather = parent.getParent();
-                    if (grandFather != null) {
-                        parent = grandFather;
-                    }
-                }
+                parent = initNode(parent, s);
                 s = "";
             } else {
-                if (c != ' ') {
-                    s += c;
-                }
+                s = changeContent(s, c);
             }
         }
-        if (node != null) {
-            while (!node.isRoot()) {
-                node = node.getParent();
-            }
+        while (node != null && !node.isRoot()) {
+            node = node.getParent();
         }
         return new TreeImpl<String>(node);
     }
