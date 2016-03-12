@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 appname='BracketTree-01'
 jarname='bool-tree'
-appfolder="/home/misha/workspace/"${appname}
+appfolderprefix='/home/misha/workspace'
 M2_HOME='/opt/apache-maven-3.2.2/'
 export M2_HOME
 M2=${M2_HOME}/bin
@@ -9,6 +9,7 @@ export M2
 PATH=${PATH}:${M2}
 export PATH
 export JAVA_HOME='/usr/lib/jvm/java-7-oracle'
+appfolder=${appfolderprefix}/${appname}
 if [ ! -e ${appfolder} ]; then echo 'ERROR: no appfolder' ${appfolder} 'found';exit 1; fi
 cd ${appfolder}
 mvn clean install $@ | tee out.txt ; test ${PIPESTATUS[0]} -eq 0

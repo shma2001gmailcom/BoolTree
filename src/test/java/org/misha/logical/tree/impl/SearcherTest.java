@@ -29,9 +29,10 @@ public class SearcherTest {
         search(root, "10", 5);
         search(root, "100", 3);
         search(root, "1000", 1);
+        search(root, "00", 3);
     }
 
-    private void search(final Node<String> root, final String toSearch, int occurs) {
+    private void search(final Node<String> root, final String toSearch, final int occurs) {
         final Pattern pattern = Pattern.compile(".*(" + toSearch + ").*");
         final Searcher<String> searcher = new Searcher<String>(root) {
 
