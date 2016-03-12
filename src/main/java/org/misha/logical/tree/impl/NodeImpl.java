@@ -5,7 +5,7 @@ import org.misha.logical.Node;
 import java.util.ArrayList;
 
 /**
- * Created by IntelliJ IDEA. User: user Date: 05.11.11 Time: 11:43
+ * Created by misha. Date: 05.11.11 Time: 11:43
  *
  * @param <T> type of content
  */

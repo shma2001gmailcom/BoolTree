@@ -5,7 +5,7 @@ import org.misha.logical.Node;
 import java.util.LinkedList;
 
 /**
- * Created by IntelliJ IDEA. User: mshevelin Date: 10/21/11 Time: 6:50 PM
+ * Created by misha. Date: 10/21/11 Time: 6:50 PM
  *
  * @param <T> a type of queue nodes content
  */
