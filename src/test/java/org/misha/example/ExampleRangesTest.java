@@ -40,8 +40,8 @@ public class ExampleRangesTest {
         for (Integer integer : integers) {
             example.search(integer);
         }
-        for (Integer exampleRange : example) {
-            assertTrue(expected.contains(exampleRange) && expected.size() == example.size());
+        for (Integer i : example) {
+            assertTrue(expected.contains(i) && expected.size() == example.size());
         }
     }
 }
