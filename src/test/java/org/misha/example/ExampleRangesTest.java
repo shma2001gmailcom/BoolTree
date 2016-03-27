@@ -9,6 +9,9 @@ import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Selects integers satisfying a condition expressed in terms of the 'ranges'.
+ */
 public class ExampleRangesTest {
 
     @Test
