@@ -11,7 +11,7 @@ import org.misha.logical.Tree;
  * @param <T> a type of nodes content
  */
 
-public class TreeImpl<T> implements Tree<T> {
+public final class TreeImpl<T> implements Tree<T> {
     private final Node<T> root;
 
     public TreeImpl(final Node<T> node) {

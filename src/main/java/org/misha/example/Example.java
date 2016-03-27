@@ -15,7 +15,7 @@ import static org.misha.util.ContentReader.readContent;
 /**
  * @author misha
  */
-class Example {
+final class Example {
     private static final Logger log = Logger.getLogger(Example.class);
     private static final byte PATH = 0;
     private static final byte CONTENT = 1;

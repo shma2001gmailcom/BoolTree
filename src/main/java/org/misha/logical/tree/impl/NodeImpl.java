@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @param <T> type of content
  */
-public class NodeImpl<T> implements Node<T> {
+public final class NodeImpl<T> implements Node<T> {
     private final ArrayList<Node<T>> children;
     private Node<T> parent;
     private T content;

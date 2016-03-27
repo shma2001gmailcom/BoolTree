@@ -35,7 +35,7 @@ import java.util.List;
  * <p/>
  * Note that each parenthesis has a meaning.
  */
-public class LogicalTree {
+public final class LogicalTree {
     private static final Logger log = Logger.getLogger(LogicalTree.class);
     private final List<Character> list = new LinkedList<Character>();
 

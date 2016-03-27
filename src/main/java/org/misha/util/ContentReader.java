@@ -12,7 +12,7 @@ import java.io.InputStream;
  * date: 3/6/16
  * time: 9:44 AM
  */
-public class ContentReader {
+public final class ContentReader {
     private static final Logger log = Logger.getLogger(ContentReader.class);
 
     private ContentReader() {
