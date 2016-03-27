@@ -24,11 +24,11 @@ final class Range {
     boolean contains(final int i) {
         final Matcher rangeMatcher = RANGE_PATTERN.matcher(range);
         if (!rangeMatcher.find()) {
-            final Matcher positiveIntMatcher = UNSIGNED_INT_PATTERN.matcher(range);
-            if (!positiveIntMatcher.find()) {
+            final Matcher unsignedIntMatcher = UNSIGNED_INT_PATTERN.matcher(range);
+            if (!unsignedIntMatcher.find()) {
                 throw new IllegalArgumentException("is not a range: " + range);
             } else {
-                return i == Integer.parseInt(positiveIntMatcher.group(1));
+                return i == Integer.parseInt(unsignedIntMatcher.group(1));
             }
         } else {
             final int low = Integer.parseInt(rangeMatcher.group(1));
