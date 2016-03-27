@@ -33,12 +33,12 @@ public class ExampleRangesTest {
             add(777);
             add(787);
         }};
-        final ExampleRanges exampleRanges = new ExampleRanges("(((101) NOT) ((97-102) (1-7) (737-787) OR) AND)");
+        final ExampleRanges example = new ExampleRanges("(((101) NOT) ((97-102) (1-7) (737-787) OR) AND)");
         for (Integer integer : integers) {
-            exampleRanges.search(integer);
+            example.search(integer);
         }
-        for (Integer exampleRange : exampleRanges) {
-            assertTrue(expected.contains(exampleRange) && expected.size() == exampleRanges.size());
+        for (Integer exampleRange : example) {
+            assertTrue(expected.contains(exampleRange) && expected.size() == example.size());
         }
     }
 }

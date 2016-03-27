@@ -15,21 +15,21 @@ import static org.misha.util.ContentReader.readContent;
 /**
  * @author misha
  */
-final class Example {
-    private static final Logger log = Logger.getLogger(Example.class);
+final class ExampleFiles {
+    private static final Logger log = Logger.getLogger(ExampleFiles.class);
     private static final byte PATH = 0;
     private static final byte CONTENT = 1;
     private final String pathRule, contentRule;
     private final LinkedList<String> results = new LinkedList<String>();
 
-    private Example(final String p, final String c) {
+    private ExampleFiles(final String p, final String c) {
         pathRule = p;
         contentRule = c;
     }
 
     public static void main(String[] args) throws Exception {
-        final Example example =
-                new Example(PropertiesReader.getProperty("path"), PropertiesReader.getProperty("content"));
+        final ExampleFiles example =
+                new ExampleFiles(PropertiesReader.getProperty("path"), PropertiesReader.getProperty("content"));
         for (Iterator<Map.Entry<String, String>> it = PropertiesReader.iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
             log.debug(entry.getKey() + " is " + entry.getValue());
