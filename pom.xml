@@ -104,7 +104,7 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addClasspath>true</addClasspath>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.misha.example.Example</mainClass>
+                            <mainClass>org.misha.example.ExampleFiles</mainClass>
                             <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                         <manifestEntries>
