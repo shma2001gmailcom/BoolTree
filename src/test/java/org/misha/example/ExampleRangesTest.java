@@ -17,6 +17,13 @@ public class ExampleRangesTest {
     @Test
     public void testSearch() throws Exception {
         final Set<Integer> integers = new HashSet<Integer>() {{
+            add(0);
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+            add(6);
             add(7);
             add(8);
             add(25);
@@ -30,13 +37,20 @@ public class ExampleRangesTest {
             add(737);
         }};
         final List<Integer> expected = new ArrayList<Integer>() {{
+            add(0);
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+            add(6);
             add(100);
             add(7);
             add(737);
             add(777);
             add(787);
         }};
-        final ExampleRanges example = new ExampleRanges("(((101) NOT) ((97-102) (1-7) (737-787) OR) AND)");
+        final ExampleRanges example = new ExampleRanges("(((10 1) NOT) ((97-102) ( 0 - 7 ) (73 7    -787) OR) AND)");
         for (Integer integer : integers) {
             example.search(integer);
         }
