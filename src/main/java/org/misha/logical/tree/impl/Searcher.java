@@ -13,11 +13,11 @@ abstract class Searcher<T> implements Iterable<Node<T>> {
     private final Node<T> root;
     private final Set<Node<T>> results = new HashSet<Node<T>>();
 
-    public Searcher(final Node<T> tree) {
+    Searcher(final Node<T> tree) {
         root = tree;
     }
 
-    public void search() {
+    void search() {
         Node<T> node;
         Queue<T> queue = new Queue<T>();
         queue.add(root);
@@ -33,7 +33,7 @@ abstract class Searcher<T> implements Iterable<Node<T>> {
         return results.iterator();
     }
 
-    public int size() {
+    int size() {
         return results.size();
     }
 

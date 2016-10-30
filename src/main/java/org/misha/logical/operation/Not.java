@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * The value
  */
 
-public final class Not implements Operation<Boolean, Boolean> {
+final class Not implements Operation<Boolean, Boolean> {
 
     private Not() {
     }

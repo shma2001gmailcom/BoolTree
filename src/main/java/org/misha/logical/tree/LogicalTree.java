@@ -21,7 +21,7 @@ import java.util.List;
  * THE RULES FOR BUILDING THE CORRECT EXPRESSION
  * <p/>
  * Let x, y, z be correct org.misha.logical expressions. Then the next (and similar)
- * org.misha.logical expressions also are correct.
+ * org.misha.logical expressions are also correct.
  * <p/>
  * 0. Any letter is a correct expression.
  * <p/>

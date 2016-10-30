@@ -69,7 +69,7 @@ final class ExampleFiles {
         return result;
     }
 
-    void search(final File file) {
+    private void search(final File file) {
         if (file.isFile()) {
             if (evaluator(PATH, file).evaluate(pathRule)) {
                 if (evaluator(CONTENT, file).evaluate(contentRule)) {
@@ -86,7 +86,7 @@ final class ExampleFiles {
         }
     }
 
-    LinkedList<String> getResults() {
+    private LinkedList<String> getResults() {
         return results;
     }
 }

@@ -12,11 +12,11 @@ import java.util.Set;
  * date: 3/27/16
  * time: 11:38 AM
  */
-public final class ExampleRanges implements Iterable<Integer> {
+final class ExampleRanges implements Iterable<Integer> {
     private final Set<Integer> result = new HashSet<Integer>();
     private final String expression;
 
-    public ExampleRanges(final String expr) {
+    ExampleRanges(final String expr) {
         expression = expr;
     }
 
@@ -30,7 +30,7 @@ public final class ExampleRanges implements Iterable<Integer> {
         };
     }
 
-    public void search(final int i) {
+    void search(final int i) {
         if (evaluator(i).evaluate(expression)) {
             result.add(i);
         }
@@ -41,7 +41,7 @@ public final class ExampleRanges implements Iterable<Integer> {
         return result.iterator();
     }
 
-    public int size() {
+    int size() {
         return result.size();
     }
 }
