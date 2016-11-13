@@ -28,7 +28,7 @@ public final class And implements Operation<Boolean, Boolean> {
         final LinkedList<Boolean> anotherArgs = new LinkedList<Boolean>();
         for (final Boolean x : args) {
             if (x == null) {
-                throw new IllegalArgumentException("Null arguments is not supported.");
+                throw new IllegalArgumentException("Null arguments are not supported.");
             }
             anotherArgs.add(!x);
         }
