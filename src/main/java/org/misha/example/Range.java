@@ -12,7 +12,7 @@ import static org.apache.commons.lang3.StringUtils.remove;
  * date: 3/27/16
  * time: 2:05 PM
  *
- * Checks if a range given contains an given integer
+ * Checks if a range given contains integer
  */
 final class Range {
     private static final String UNSIGNED_INT =
